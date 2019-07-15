@@ -1,3 +1,3 @@
-require_relative "./app/bookmarkmanager"
+require "./app/app.rb"
 
 run BookMarkManager
