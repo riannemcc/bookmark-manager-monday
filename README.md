@@ -1,19 +1,20 @@
 # bookmark-manager-monday
 
 ```
-**Client**
+<pre>
+<b>Client</b>
 +-------------------+
 | Domain/bookmarks  |
 +-------------------+
 
-**Controller**
+<b>Controller</b>
 +-------------------+
 | app.rb            |
 |~~~~~~~~~~~~~~~~~~~|
 | GET request       |
 +-------------------+
 
-**Model:**
+<b>Model:</b>
 +-------------------+
 | BookMarkManager   |
 |~~~~~~~~~~~~~~~~~~~|
@@ -22,8 +23,8 @@
 | show_list         |
 +-------------------+
 
-**View:**
+<b>View:</b>
 +-------------------+
 | erb bookmarks     |
 +-------------------+
-```
+</pre>```
