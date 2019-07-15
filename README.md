@@ -1,6 +1,6 @@
 # bookmark-manager-monday
 
-```>
+```
 **Client:**
 +-------------------+
 | Domain/bookmarks  |
@@ -26,5 +26,4 @@
 +-------------------+
 | erb bookmarks     |
 +-------------------+
->
 ```
