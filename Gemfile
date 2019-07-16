@@ -7,6 +7,7 @@ git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 gem 'rake'
 gem 'sinatra'
 gem 'pg'
+gem 'launchy'
 
 
 group :test do
