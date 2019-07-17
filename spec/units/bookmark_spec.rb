@@ -39,4 +39,27 @@ describe Bookmark do
       expect(Bookmark.all.length).to eq 0
     end
   end
+
+  describe '.edit' do
+    it 'edits a bookmark' do
+      bookmark = Bookmark.create(title: 'Mamamia', url:'http://www.mamamia.com')
+      edited_bookmark = Bookmark.edit(id: bookmark.id, url: 'http:/www.awesomemamamia.com')
+      expect(edited_bookmark).to be_a Bookmark
+      expect(edited_bookmark.id).to eq bookmark.id
+      expect(edited_bookmark.url).to eq 'http:/www.awesomemamamia.com'
+    end
+  end
+
+  describe '.find' do
+    it 'returns the requested bookmark object' do
+      bookmark = Bookmark.create(title: 'Makers Academy', url: 'http://www.makersacademy.com')
+
+       result = Bookmark.find(id: bookmark.id)
+
+       expect(result).to be_a Bookmark
+      expect(result.id).to eq bookmark.id
+      expect(result.title).to eq 'Makers Academy'
+      expect(result.url).to eq 'http://www.makersacademy.com'
+    end
+  end
 end

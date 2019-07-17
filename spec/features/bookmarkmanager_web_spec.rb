@@ -43,3 +43,21 @@ feature 'Deleting a bookmark' do
     expect(page).not_to have_link('Jurassic Park', href: 'http://www.noonegoeshere.com')
   end
 end
+
+feature 'Editing a bookmark' do
+  scenario 'A user can edit a bookmark' do
+    bookmark = Bookmark.create(title: 'Jurassic Park', url: 'http://www.noonegoeshere.com')
+    visit('/')
+    expect(page).to have_link('Jurassic Park', href: 'http://www.noonegoeshere.com')
+
+     first('.bookmark').click_button 'Edit'
+     expect(current_path).to eq "/bookmarks/#{bookmark.id}/edit"
+     fill_in('title', with: 'Jurassic Park')
+     fill_in('url', with: 'http://notjurassicpark.com')
+     click_button('Submit')
+
+     expect(current_path).to eq '/'
+     # expect(page).not_to have_link('Jurassic Park', href: 'http://www.noonegoeshere.com')
+     expect(page).to have_link('Jurassic Park', href: 'http://notjurassicpark.com')
+  end
+end
