@@ -5,11 +5,11 @@ class BookMarkManager < Sinatra::Base
   enable :sessions, :method_override
   get '/' do
     @bookmarks = Bookmark.all
-    erb :'index'
+    erb :index
   end
 
   get '/bookmarks/new' do
-    erb :'bookmarks_new'
+    erb :bookmarks_new
   end
 
   post '/bookmarks_create' do
@@ -24,10 +24,10 @@ class BookMarkManager < Sinatra::Base
 
   get '/bookmarks/:id/edit' do
     @bookmark = Bookmark.find(id: params[:id])
-    erb :"bookmarks_edit"
+    erb :bookmarks_edit
   end
 
-  patch '/bookmarks/:id' do
+  patch '/:id' do
     Bookmark.edit(id: params[:id], title: params[:title], url: params[:url])
     redirect '/'
   end

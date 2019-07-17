@@ -42,10 +42,10 @@ describe Bookmark do
 
   describe '.edit' do
     it 'edits a bookmark' do
-      bookmark = Bookmark.create(title: 'Mamamia', url:'http://www.mamamia.com')
-      edited_bookmark = Bookmark.edit(id: bookmark.id, url: 'http:/www.awesomemamamia.com')
+      edited_bookmark = Bookmark.create(title: 'Mamamia', url:'http://www.mamamia.com')
+      edited_bookmark = Bookmark.edit(id: edited_bookmark.id, title: 'Mamamia', url: 'http:/www.awesomemamamia.com')
       expect(edited_bookmark).to be_a Bookmark
-      expect(edited_bookmark.id).to eq bookmark.id
+      expect(edited_bookmark.id).to eq edited_bookmark.id
       expect(edited_bookmark.url).to eq 'http:/www.awesomemamamia.com'
     end
   end
@@ -56,7 +56,7 @@ describe Bookmark do
 
        result = Bookmark.find(id: bookmark.id)
 
-       expect(result).to be_a Bookmark
+      expect(result).to be_a Bookmark
       expect(result.id).to eq bookmark.id
       expect(result.title).to eq 'Makers Academy'
       expect(result.url).to eq 'http://www.makersacademy.com'
