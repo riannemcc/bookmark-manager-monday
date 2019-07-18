@@ -1,5 +1,6 @@
 require 'sinatra'
 require './lib/bookmark'
+require_relative './database_connection_setup.rb'
 
 class BookMarkManager < Sinatra::Base
   enable :sessions, :method_override
