@@ -8,6 +8,7 @@ gem 'launchy'
 gem 'pg'
 gem 'rake'
 gem 'sinatra'
+gem 'sinatra-flash'
 
 group :test do
   gem 'capybara'

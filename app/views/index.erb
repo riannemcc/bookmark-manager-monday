@@ -4,17 +4,20 @@
       <a href="<%= bookmark.url %>" target="_blank">
         <%= bookmark.title %>
       </a>
-      <form action="//<%= bookmark.id %>" method="post">
+      <form action="/bookmarks/<%= bookmark.id %>" method="post">
         <input type='hidden' name='_method' value='DELETE'/>
         <input type="submit" value="Delete" />
       </form>
-      
+
       <form action="/bookmarks/<%= bookmark.id %>/edit" method="get">
         <input type="submit" value="Edit" />
       </form>
     </li>
   <% end %>
 </ul>
+<p>
+  <%= flash[:notice] %>
+</p>
 
 <form action="/" method="get">
     <input type="submit" value="Create Bookmark" formaction="/bookmarks/new">

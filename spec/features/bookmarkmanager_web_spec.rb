@@ -22,6 +22,7 @@ feature 'Adding a new bookmark' do
     click_button('Submit')
     expect(page).to have_content 'Test'
   end
+
   scenario 'A user can add another bookmark to Bookmark Manager' do
     visit('/bookmarks/new')
     fill_in('title', with: 'Testone')
@@ -29,6 +30,15 @@ feature 'Adding a new bookmark' do
     click_button('Submit')
     expect(page).to have_content 'Test'
   end
+
+  scenario 'The bookmark must be a valid URL' do
+  visit('/bookmarks/new')
+  fill_in('url', with: 'not a real bookmark')
+  click_button('Submit')
+
+  expect(page).not_to have_content "not a real bookmark"
+  expect(page).to have_content "You must submit a valid URL."
+end
 end
 
 feature 'Deleting a bookmark' do
@@ -41,5 +51,24 @@ feature 'Deleting a bookmark' do
 
      expect(current_path).to eq '/'
     expect(page).not_to have_link('Jurassic Park', href: 'http://www.noonegoeshere.com')
+  end
+end
+
+feature 'Updating a bookmark' do
+  scenario 'A user can update a bookmark' do
+    bookmark = Bookmark.create(title: 'Makers Academy', url: 'http://www.makersacademy.com')
+    visit('/')
+    expect(page).to have_link('Makers Academy', href: 'http://www.makersacademy.com')
+
+     first('.bookmark').click_button 'Edit'
+    expect(current_path).to eq "/bookmarks/#{bookmark.id}/edit"
+
+     fill_in('url', with: "http://www.snakersacademy.com")
+    fill_in('title', with: "Snakers Academy")
+    click_button('Submit')
+
+     expect(current_path).to eq '/'
+    expect(page).not_to have_link('Makers Academy', href: 'http://www.makersacademy.com')
+    expect(page).to have_link('Snakers Academy', href: 'http://www.snakersacademy.com')
   end
 end
