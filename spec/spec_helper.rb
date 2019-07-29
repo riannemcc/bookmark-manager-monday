@@ -2,6 +2,7 @@ ENV['RACK_ENV'] = 'test'
 ENV['ENVIRONMENT'] = 'test'
 
 require_relative './setup_test_database'
+require_relative '../lib/database_connection'
 
 require File.join(File.dirname(__FILE__), '..', 'app/app.rb')
 require 'features/web_helpers'

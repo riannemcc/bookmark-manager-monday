@@ -1,0 +1,19 @@
+body {
+	background-color: #7ac48e;
+}
+
+h2 {
+  font-size: 20px;
+  font-family: Andale Mono, monospace;
+  color: #E5DEE1;
+}
+
+h4 {
+  font-size: 40px;
+  font-family: Andale Mono, monospace;
+  color: #E5DEE1;
+}
+
+p {
+  font-family: Andale Mono, monospace;
+}
